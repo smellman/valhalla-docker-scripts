@@ -10,13 +10,13 @@ docker pull valhalla/valhalla:run-latest
 
 ```bash
 # wget pbf file
-docker run -e PBF_FILE=japan-20220712.pbf -v ${PWD}:/srv -it valhalla/valhalla:run-latest /srv/run_valhalla_all.sh
+docker run --rm -u `id -u`:`id -g` -e PBF_FILE=planet-220704.osm.pbf -v ${PWD}:/srv valhalla/valhalla:run-latest /srv/run_valhalla_all.sh 
 ```
 
 ## run routing
 
 ```bash
-docker run -p 8002:8002 -v ${PWD}:/srv -it valhalla/valhalla:run-latest /srv/run_valhalla_api.sh
+docker run --rm -it -u `id -u`:`id -g` -p 8002:8002 -v ${PWD}:/srv valhalla/valhalla:run-latest /srv/run_valhalla_api.sh
 ```
 
 ### visual demo
